@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { FiSettings } from 'react-icons/fi';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
@@ -26,9 +26,17 @@ import {
 import { useStateContext } from './contexts/ContextProvider';
 
 const App = () => {
-  const { currentColor, currentMode, activeMenu, themeSettings, setThemeSettings } =
+  const theme = localStorage.getItem('themeMode');
+  const color = localStorage.getItem('themeColor');
+  const { currentColor, setMode, setColor, currentMode, activeMenu, themeSettings, setThemeSettings } =
     useStateContext();
-
+  useEffect(() => {
+    if (theme === 'Dark') {
+      setMode('Dark');
+    }
+    setColor(color)
+  }, [theme]);
+  
   return (
     <div className={currentMode === 'Dark' ? 'dark' :''}>
       <BrowserRouter>

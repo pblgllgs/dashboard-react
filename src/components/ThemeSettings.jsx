@@ -4,7 +4,6 @@ import { BsCheck } from 'react-icons/bs';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 import { themeColors } from '../data/dummy';
 import { useStateContext } from '../contexts/ContextProvider';
-import { setLinkModel } from '@syncfusion/ej2/spreadsheet';
 
 const ThemeSettings = () => {
 
@@ -12,7 +11,7 @@ const ThemeSettings = () => {
 
   return (
     <div className="bg-half-transparent w-screen fixed nav-item top-0 right-0">
-      <div className="float-right h-screen dark:text-gray-200 bg-white dark:[#484B52] w-400">
+      <div className="float-right h-screen dark:text-gray-200 bg-white dark:[#484B52] dark:bg-secondary-dark-bg w-400">
         <div className="flex justify-between items-center p-4 ml-4">
           <p className="font-semibold text-xl">Settings</p>
           <button
@@ -47,7 +46,7 @@ const ThemeSettings = () => {
               id="dark"
               value="Dark"
               className="cursor-pointer"
-              onChange={setMode}
+              onChange={() => setMode('Dark')}
               checked={currentMode === 'Dark'}
             />
             <label htmlFor="dark" className="ml-2 text-md cursor-pointer">
